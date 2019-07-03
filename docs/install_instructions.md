@@ -15,7 +15,13 @@ A server with 16G Memory, 4+ CPUs, 200G disk is required to run the AIO LM envir
 To install the AIO you will need [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) (tested on v2.8.1) on your machine. You may also need sshpass installed if password access is being used to the server.
 
 ```
-apt-get install sshpass
+sudo apt-get install sshpass
+```
+
+Ensure `python-apt` is installed, this may be needed when using v2.8+
+
+```
+sudo apt-get install python-apt
 ```
 
 #### Vagrant
