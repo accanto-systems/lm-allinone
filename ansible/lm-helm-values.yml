@@ -1,0 +1,202 @@
+{% if lm_external_openldap|default(False)|bool == True %}
+global: 
+  ldap:
+    managerPassword: "{{ lm_external_openldap_manager_password }}"
+{% endif %}
+
+cassandra:
+  persistence:
+    size: 500Mi
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  config:
+    max_heap_size: 512M
+    heap_new_size: 128M
+
+elasticsearch:
+  enabled: false
+  client:
+    serviceType: NodePort
+
+eslite:
+  enabled: true
+  client:
+    service:
+      type: NodePort
+  data:
+    persistence:
+      size: 1Gi
+    heapSize: "1200m"
+    resources:
+      requests:
+        cpu: 250m
+        memory: 1.5Gi
+      limits:
+        cpu: 500m
+        memory: 1.5Gi
+
+kafka:
+  persistence:
+    size: 1Gi
+  resources:
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 300m
+      memory: 512Mi
+  kafkaHeapOptions: "-Xmx512M -Xms512M"
+  external:
+    enabled: true
+  livenessProbe:
+    initialDelaySeconds: 90
+    timeoutSeconds: 10
+  readinessProbe:
+    initialDelaySeconds: 90
+    timeoutSeconds: 10
+  zookeeper:
+    env:
+      ZK_HEAP_SIZE: "256M"
+    persistence:
+      size: 1Gi
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 100m
+        memory: 256Mi
+
+openldap:
+{% if lm_external_openldap|default(False)|bool == True %}
+  enabled: false
+{% else %}
+  enabled: true
+  persistence:
+    size: 500Mi
+  resources:
+    requests:
+      cpu: 25m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 256Mi
+{% endif %}
+
+vault:
+  resources:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 150m
+    memory: 128Mi
+
+filebeat:
+  enabled: true
+  resources:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 256Mi
+
+configurator:
+  lmConfigImport:
+    apollo:
+      alm.apollo.janus.storage.cql.replication-factor: 1
+      # number of JanusGraph ES index shards
+      alm.apollo.janus.index.search.elasticsearch.create.ext.index.number_of_shards: 1
+      # number of JanusGraph ES index replicas
+      alm.apollo.janus.index.search.elasticsearch.create.ext.index.number_of_replicas: 0
+
+    galileo:
+      alm.galileo.janus.storage.cql.replication-factor: 1
+      # number of JanusGraph ES index shards
+      alm.galileo.janus.index.search.elasticsearch.create.ext.index.number_of_shards: 1
+      # number of JanusGraph ES index replicas
+      alm.galileo.janus.index.search.elasticsearch.create.ext.index.number_of_replicas: 0
+
+    talledega:
+      alm.talledega.janus.storage.cql.replication-factor: 1
+      # number of JanusGraph ES index shards
+      alm.talledega.janus.index.search.elasticsearch.create.ext.index.number_of_shards: 1
+      # number of JanusGraph ES index replicas
+      alm.talledega.janus.index.search.elasticsearch.create.ext.index.number_of_replicas: 0
+
+{% if lm_external_openldap|default(False)|bool == True %}
+    ishtar:
+      alm.ishtar.security.ldap.url: {{lm_external_openldap_url}}
+  security:
+    ldap:
+      enabled: false
+{% endif %}
+
+apollo: 
+  app:
+    config:
+      env:
+        "JVM_OPTIONS": "-Xmx100m"
+    
+conductor:
+  app:
+    config:
+      configServer:
+        vault: 
+          enabled: true
+      env:
+        "JVM_OPTIONS": "-Xmx100m"
+
+relay:
+  service:
+    type: NodePort
+  app:
+    config:
+      env:
+        "JVM_OPTIONS": "-Xmx100m"
+
+daytona:
+  app:
+    config:
+      env:
+        "JVM_OPTIONS": "-Xmx256m"
+
+galileo:
+  app:
+    config:
+      env:
+        "JVM_OPTIONS": "-Xmx256m"
+
+ishtar:
+  app:
+    config:
+      env:
+        "JVM_OPTIONS": "-Xmx100m"
+doki:
+  app:
+    config:
+      env:
+        "JVM_OPTIONS": "-Xmx200m"
+
+nimrod:
+  app:
+    config:
+      env:
+        "JVM_OPTIONS": "-Xmx100m"
+    
+talledega:
+  app:
+    config:
+      env:
+        "JVM_OPTIONS": "-Xmx256m"
+    
+watchtower:
+  app:
+    config:
+      env:
+        "JVM_OPTIONS": "-Xmx256m"
+  

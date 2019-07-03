@@ -1,0 +1,35 @@
+#####################################################################
+# Update and configure base ubuntu server for AIO
+#####################################################################
+
+- name: Get OS release
+  raw: lsb_release -c
+  register: lsb_release
+
+- name: Set OS release variable
+  set_fact:
+    os_release: "{{ lsb_release.stdout.split(':')[1] | trim }}"
+
+- name: Check for correct OS version
+  fail:
+    msg: "AIO requires Ubuntu Xenial and the OS is {{ os_release }}"
+  when: os_release != 'xenial'
+
+- name: Update apt cache
+  raw: apt-get -y update
+
+- name: If needed, install Python
+  raw: apt-get -y install python python-pip 
+
+- name: Set Hostname
+  hostname:
+    name: "{{hostname}}"
+
+- name: Gather Facts
+  setup:
+
+- name: Add hostname to hosts file
+  lineinfile:
+    dest: /etc/hosts
+    line: "{{ kubeadm_advertise_address|default(hostvars[inventory_hostname]['ansible_default_ipv4']['address']) }} {{hostname}}"
+    state: present

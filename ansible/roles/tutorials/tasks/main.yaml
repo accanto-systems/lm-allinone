@@ -1,0 +1,16 @@
+##################################################
+# Optionally install tutorials
+##################################################
+
+- name: Start tutorials
+  docker_container:
+    name: tutorials
+    image: "{{ tutorials_image }}"
+    state: started
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    restart: yes
+    ports:
+      - "8888:8888"
+    env: LMHOST={{ kubeadm_advertise_address }}
+  when: tutorials is defined

@@ -1,0 +1,15 @@
+######################
+# Ansible
+######################
+ansible/roles/ansiblerm
+ansible/roles/docker
+ansible/roles/kubeadm
+ansible/roles/helm
+ansible/roles/lifecyclemanager
+ansible/roles/lifecyclemanager-proxy
+ansible/*.retry
+
+######################
+# Bootstrap Content
+######################
+lm-artifacts/**

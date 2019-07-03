@@ -1,0 +1,14 @@
+##################################################
+# Optionally install portainer 
+##################################################
+
+- name: Start portainer
+  docker_container:
+    name: portainer
+    image: portainer/portainer
+    state: started
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    ports:
+      - "9000:9000"
+  when: portainer is defined
