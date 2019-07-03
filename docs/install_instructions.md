@@ -12,7 +12,11 @@ A server with 16G Memory, 4+ CPUs, 200G disk is required to run the AIO LM envir
 
 #### Ansible
 
-To install the AIO you will need [Ansible](https://www.ansible.com/) (tested on v2.7.2) on your machine. You may also sshpass installed if password access is being used to the server.
+To install the AIO you will need [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) (tested on v2.8.1) on your machine. You may also need sshpass installed if password access is being used to the server.
+
+```
+apt-get install sshpass
+```
 
 #### Vagrant
 
@@ -61,7 +65,7 @@ lm_docker_package: ../lm-artifacts/lm-helm-charts-2.0.3-207-dist.tgz
 
 ### Connecting the AIO to a CICDHub
 
-If you have access to a [CICDHub](https://github.com/accanto-systems/lm-cicdhub) environment, you can connect your AIO environment to it by downloading the `aio-variables.yml` from it's Nexus repository (usual path: http://cicdhub_ip:8002/repository/raw/allinone/aio-variables.yml). Contact your CICDHub admin for more details.
+If you have access to a [CICDHub](https://github.com/accanto-systems/lm-cicdhub) environment, you can connect your AIO environment to it by downloading the `aio-variables.yml` from it's Nexus repository (usual path: [http://cicdhub_ip:8002/repository/raw/allinone/aio-variables.yml]). Contact your CICDHub admin for more details.
 
 The potential benefits to connecting to a CICDHub are:
 
@@ -116,7 +120,7 @@ By default, the AIO environment will attach to a private network with the IP add
 nodeconfig.vm.network 'private_network', ip: '192.168.56.100'
 ```
 
-If desired, the IP address can be changed to another IP address on a private network (see https://www.vagrantup.com/docs/networking/private_network.html for more details), or to an IP address on a public network (see https://www.vagrantup.com/docs/networking/public_network.html for more details), in which case it will allow public access to your AIO environment (be careful to consider the security implications if you are doing this - see the Vagrant documentation above for details). For example, to assign a public network IP address using DHCP:
+If desired, the IP address can be changed to another IP address on a private network (see [Private Network](https://www.vagrantup.com/docs/networking/private_network.html) for more details), or to an IP address on a public network (see [Private Network](https://www.vagrantup.com/docs/networking/public_network.html) for more details), in which case it will allow public access to your AIO environment (be careful to consider the security implications if you are doing this - see the Vagrant documentation above for details). For example, to assign a public network IP address using DHCP:
 
 ```
 nodeconfig.vm.network "public_network"
@@ -150,7 +154,7 @@ In some cases you may prefer to install the AIO environment on an existing serve
 
 ### Configuring Inventory
 
-Before running the playbook you must modify the `allinone.yml` host file at `./inventories/allinone/host_vars` with the details of the server for the AIO to be installed.
+Before running the playbook you must modify the `ansible/inventories/allinone/host_vars/allinone.yml` file with details of the target host for the AIO to be installed.
 
 At minimum you will need to configure the address and credentials used for SSH access (values shown are only examples):
 
@@ -161,7 +165,7 @@ ansible_ssh_pass: vagrant
 ansible_become_pass: vagrant
 ```
 
-_Note: The AIO playbooks will require a password to become `sudo` user_
+_Note: The AIO playbooks will require access to the `sudo` user_
 
 The inventory may be configured in any way supported by Ansible, meaning you may choose to use SSH passwords or SSH keys and you may choose to store values in plain-text or with ansible-vault. See [Build Your Inventory](https://docs.ansible.com/ansible/latest/network/getting_started/first_inventory.html) and [List of behavioual inventory parameters](https://docs.ansible.com/ansible/latest/intro_inventory.html#list-of-behavioral-inventory-parameters) from the Ansible documentation.
 

@@ -13,4 +13,4 @@ Scripts are provided to create AIO environments using Vagrant, supporting Virtua
 
 # Install
 
-Follow the [Install Instructions](./docs/install_instructions.md) to get started
+Clone this repository and follow the [Install Instructions](./docs/install_instructions.md) to get started
