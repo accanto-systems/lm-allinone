@@ -36,7 +36,7 @@ Vagrant.configure(2) do |config|
       override.vm.box = "accanto/hyperkit"
       # Hyperkit does not allow us to explicitly set the IP address of a guest machine but does allow us to
       # fix it to an IP address generated from a UUID.
-      override.vm.network 'private_network', ip: '192.168.65.2'
+      override.vm.network 'private_network', ip: '192.168.64.2'
       override.vm.synced_folder './', '/vagrant', type: 'rsync'
     end
 
