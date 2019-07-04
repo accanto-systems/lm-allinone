@@ -34,9 +34,9 @@ Install the Vagrant Hyperkit box:
 vagrant box add accanto/hyperkit
 ```
 
-Edit Vagrantfile and make sure that "xhyve.xhyve_binary" points to where you installed your hyperkit binary.
+Edit Vagrantfile and make sure that `hyperkit.xhyve_binary` points to where you installed your hyperkit binary.
 
-Edit the variables.yml file and change the flannel interface to:
+Edit the `ansible/ansible-variables.yml` file and change the flannel interface to:
 ```
 flannel_interface: "enp0s1"
 ```
