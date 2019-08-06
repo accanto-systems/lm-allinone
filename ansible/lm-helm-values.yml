@@ -7,6 +7,7 @@ global:
 cassandra:
   persistence:
     size: 500Mi
+    storageClass: microk8s-hostpath
   resources:
     requests:
       cpu: 500m
@@ -31,6 +32,7 @@ eslite:
   data:
     persistence:
       size: 1Gi
+      storageClass: microk8s-hostpath
     heapSize: "1200m"
     resources:
       requests:
@@ -41,8 +43,10 @@ eslite:
         memory: 1.5Gi
 
 kafka:
+  storageClass: microk8s-hostpath
   persistence:
     size: 1Gi
+    storageClass: microk8s-hostpath
   resources:
     requests:
       cpu: 200m
@@ -64,6 +68,7 @@ kafka:
       ZK_HEAP_SIZE: "256M"
     persistence:
       size: 1Gi
+      storageClass: microk8s-hostpath
     resources:
       requests:
         cpu: 100m
@@ -79,6 +84,7 @@ openldap:
   enabled: true
   persistence:
     size: 500Mi
+    storageClass: microk8s-hostpath
   resources:
     requests:
       cpu: 25m
@@ -97,7 +103,11 @@ vault:
     memory: 128Mi
 
 filebeat:
+{% if lm_filebeat_enabled|default(False)|bool == True %}
   enabled: true
+{% else %}
+  enabled: false
+{% endif %}
   resources:
     cpu: 100m
     memory: 128Mi

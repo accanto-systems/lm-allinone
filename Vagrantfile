@@ -43,6 +43,8 @@ Vagrant.configure(2) do |config|
     nodeconfig.vm.provision "ansible_local" do |ansible|
       ansible.become = true
       ansible.playbook = "ansible/start-aio.yml"
+      # make sure we have the latest Ansible
+      ansible.version = "latest"
     end
   end
 end
