@@ -104,7 +104,7 @@ At minimum it is recommended that you consider updating the following to ensure 
 
 ```
 hostname: "allinone"
-kubeadm_advertise_address: 192.168.56.100
+advertise_address: 192.168.56.100
 flannel_interface: "eth1"
 ```
 
@@ -193,7 +193,7 @@ Revisit the following variables in the `ansible/ansible-variables.yml` file, ens
 
 ```
 hostname: "allinone"
-kubeadm_advertise_address: 192.168.56.100
+advertise_address: 192.168.56.100
 flannel_interface: "eth1"
 ```
 

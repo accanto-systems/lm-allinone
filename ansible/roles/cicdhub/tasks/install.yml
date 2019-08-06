@@ -1,0 +1,30 @@
+- name: Register CICDHub installation directory
+  set_fact:
+    cicdhub_installer_dir: "/home/{{ ansible_user_id }}/cicdhub-installer"
+
+- name: Copy base helm values file
+  template:
+    src: "base_values.yml"
+    dest: "{{ cicdhub_installer_dir }}/cicdhub_base_values.yaml"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+
+- name: Include base helm values file
+  set_fact:
+    base_values: "-f {{ cicdhub_installer_dir }}/cicdhub_base_values.yaml"
+
+- name: Copy custom helm values file
+  template:
+    src: "{{ cicdhub_values }}"
+    dest: "{{ cicdhub_installer_dir }}/cicdhub_custom_values.yaml"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+  when: not (cicdhub_values is undefined or cicdhub_values is none or (cicdhub_values|trim == ''))
+
+- name: Include custom helm values file
+  set_fact:
+    extra_values: "-f {{ cicdhub_installer_dir }}/cicdhub_custom_values.yaml"
+  when: not (cicdhub_values is undefined or cicdhub_values is none or (cicdhub_values|trim == ''))
+
+- name: Install CICDHub
+  command: helm install "{{ cicdhub_helm_chart_location }}" --name cicdhub {{base_values}} {% if extra_values is defined %}{{extra_values}}{% endif %}

@@ -38,7 +38,7 @@ Edit Vagrantfile and make sure that `hyperkit.xhyve_binary` points to where you 
 
 Edit the `ansible/ansible-variables.yml` file and change the advertise address and flannel interface to:
 ```
-kubeadm_advertise_address: 192.168.64.2
+advertise_address: 192.168.64.2
 flannel_interface: "enp0s1"
 ```
 

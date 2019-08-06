@@ -6,14 +6,6 @@
   scm: git
   name: lifecyclemanager
 
-- src: https://github.com/accanto-systems/ansible-role-docker.git
-  scm: git
-  name: docker
-
-- src: https://github.com/accanto-systems/ansible-role-kubeadm.git
-  scm: git
-  name: kubeadm
-
 - src: https://github.com/accanto-systems/ansible-role-helm.git
   scm: git
   name: helm
@@ -21,3 +13,7 @@
 - src: https://github.com/accanto-systems/ansible-role-ansiblerm.git
   scm: git
   name: ansiblerm
+
+- src: https://github.com/accanto-systems/ansible-role-microk8s
+  scm: git
+  name: microk8s
