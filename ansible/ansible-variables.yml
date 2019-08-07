@@ -57,7 +57,7 @@ helm: True
 ####################################################################################
 
 ## Disable to prevent installation of CICDHub
-cicdhub: True
+cicdhub: False
 
 ## CICDHub Helm chart location
 cicdhub_helm_chart_location: https://github.com/accanto-systems/lm-cicdhub/releases/tag/v2.0.5-alpha-1

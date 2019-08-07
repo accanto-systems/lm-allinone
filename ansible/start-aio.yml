@@ -20,6 +20,10 @@
       when: helm|default(False)|bool == True
 
     - import_role:
+        name: cicdhub
+      when: cicdhub|default(False)|bool == True
+
+    - import_role:
         name: lifecyclemanager
       when: lm|default(False)|bool == True
 
