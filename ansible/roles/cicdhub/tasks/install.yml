@@ -2,9 +2,20 @@
   set_fact:
     cicdhub_installer_dir: "/home/{{ ansible_user_id }}/cicdhub-installer"
 
+- name: Print CICDHub installation directory
+  debug:
+    msg: "CICDHub installation directory set to: {{cicdhub_installer_dir}}"
+
+- name: Ensure directory for installation exists
+  file:
+    path: "{{ cicdhub_installer_dir }}"
+    state: directory
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+
 - name: Copy base helm values file
   template:
-    src: "base_values.yml"
+    src: "base_values.yaml"
     dest: "{{ cicdhub_installer_dir }}/cicdhub_base_values.yaml"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"

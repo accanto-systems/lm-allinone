@@ -5,8 +5,6 @@
   become_method: sudo
   vars_files:
     - ansible-variables.yml
-  environment:
-    DOCKER_HOST: "{{ DOCKER_HOST }}"
   tasks:
     - import_role:
         name: initial-setup
