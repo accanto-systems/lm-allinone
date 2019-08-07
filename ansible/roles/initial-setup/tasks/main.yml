@@ -38,9 +38,3 @@
     dest: /etc/hosts
     line: "{{ advertise_address|default(hostvars[inventory_hostname]['ansible_default_ipv4']['address']) }} {{hostname}}"
     state: present
-
-# needed by e.g. docker-compose
-# - name: Set Docker Environment Variables
-#   set_fact:
-#     docker_env:
-
