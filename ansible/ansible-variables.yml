@@ -27,9 +27,6 @@ k8s_type: microk8s
 ## Disable to prevent installation of Microk8s
 microk8s: True
 
-## Microk8s Docker socket (probably don't need to change this)
-DOCKER_HOST: "unix://var/snap/microk8s/current/docker.sock"
-
 # Enable to install the K8s Dashboard
 #k8s_dashboard: True
 
@@ -65,7 +62,6 @@ lm_nexus_enabled: True
 lm_gogs_enabled: True
 lm_docker_registry_enabled: True
 lm_jenkins_enabled: True
-lm_openldap_enabled: True
 
 ####################################################################################
 # Lifecycle Manager
@@ -118,11 +114,6 @@ lm_docker_package: ../lm-artifacts/lm-docker-source-<LM_VERSION>-dist.tgz
 # Custom values to include on the helm installation
 lm_values: lm-helm-values.yml
 
-## Run helper script to create directories for persistent volumes (required when using local volumes, which is the default)
-## Note: given we're using Microk8s for this installer (which has provisioned local volumes) we don't really need this.
-## But it needs to be here because other Ansible roles use it.
-lm_init_volumes: False
-
 ## Disable security by removing lm_secure
 lm_secure: True
 # Set to change the default Admin client secret 
@@ -136,10 +127,12 @@ lm_secure: True
 #lm_theme_name: name of theme (name of theme directory inside the theme.tar to be used)
 
 ## The following are optionally installed with LM, set to False or comment out to disable them
+## By default, OpenLDAP is enabled for LM and disabled for OpenLDAP
 lm_nginx_ingress_enabled: False
 lm_filebeat_enabled: False
 lm_kibana_enabled: False
 lm_kafdrop_enabled: False
+lm_openldap_enabled: True
 
 ####################################################################################
 # Ansible RM Variables
