@@ -1,1 +1,9 @@
-- import_tasks: install.yml
+- name: Install CICDHub
+  import_tasks: install_cicdhub.yml
+
+- name: Check Apache Installed
+  import_tasks: check_apache_installed.yml
+
+- name: Install CICDHub Proxy
+  import_tasks: install_proxy.yml
+

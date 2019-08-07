@@ -1,0 +1,43 @@
+- name: Check Apache Installed
+  import_tasks: check_apache_installed.yml
+
+- name: Ensure Python and Pip installed
+  apt: 
+    name: 
+      - python
+      - python-pip
+    state: present 
+    update_cache: yes
+    
+- name: Install pyopenssl
+  pip:
+    name: pyopenssl
+    state: present
+
+- name: Add CICDHub ingress hosts to hostsfile 
+  lineinfile:
+    dest: /etc/hosts
+    line: "127.0.0.1 docker-registry.cicdhub git.cicdhub nexus.cicdhub nexus.cicdhub jenkins-master.cicdhub"
+    state: present
+
+- name: Remove existing CICDHub proxy site (if exists)
+  command: a2dissite cicdhub-proxy.conf
+  failed_when: false
+
+- name: Remove existing CICDHub proxy config (if exists)
+  file:
+    state: absent
+    path: /etc/apache2/sites-available/cicdhub-proxy.conf
+
+- name: Copy proxy config
+  template:
+    src: cicdhub-proxy.conf
+    dest: /etc/apache2/sites-available
+    
+- name: Add proxy site
+  command: a2ensite cicdhub-proxy.conf
+
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted

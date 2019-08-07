@@ -217,6 +217,10 @@ When the installation is finished the following services can be accessed as foll
 | **LM-UI**                | <https://YOUR_SERVER:8082>                               |
 | **LM-API**               | <https://YOUR_SERVER:8083>                               |
 | **Kibana**               | <http://YOUR_SERVER:8084>                                |
+| **Nexus**                | <http://YOUR_SERVER:8085>                                |
+| **Gogs**                 | <http://YOUR_SERVER:8086>                                |
+| **Jenkins Master**       | <http://YOUR_SERVER:8087>                                |
+| **Docker Registry**      | <http://YOUR_SERVER:8088>                                |
 | **Portainer**            | <http://YOUR_SERVER:9000>                                |
 | **Ansible RM**           | <https://YOUR_SERVER:31081/api/v1.0/resource-manager/ui> |
 | **Kubernetes Dashboard** | <http://YOUR_SERVER:31443>                               |
