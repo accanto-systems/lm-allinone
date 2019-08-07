@@ -6,15 +6,6 @@
   raw: lsb_release -c
   register: lsb_release
 
-- name: Set OS release variable
-  set_fact:
-    os_release: "{{ lsb_release.stdout.split(':')[1] | trim }}"
-
-- name: Check for correct OS version
-  fail:
-    msg: "AIO requires Ubuntu Xenial and the OS is {{ os_release }}"
-  when: os_release != 'xenial'
-
 - name: Update apt cache
   raw: apt-get -y update
 

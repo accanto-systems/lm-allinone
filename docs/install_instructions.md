@@ -214,9 +214,9 @@ When the installation is finished the following services can be accessed as foll
 
 | **AIO Services**         | Address                                                  |
 | ------------------------ | -------------------------------------------------------- |
-| **LM-UI**                | <https://YOUR_SERVER:8080>                               |
-| **LM-API**               | <https://YOUR_SERVER:8081>                               |
-| **Kibana**               | <http://YOUR_SERVER:8083>                                |
+| **LM-UI**                | <https://YOUR_SERVER:8082>                               |
+| **LM-API**               | <https://YOUR_SERVER:8083>                               |
+| **Kibana**               | <http://YOUR_SERVER:8084>                                |
 | **Portainer**            | <http://YOUR_SERVER:9000>                                |
 | **Ansible RM**           | <https://YOUR_SERVER:31081/api/v1.0/resource-manager/ui> |
 | **Kubernetes Dashboard** | <http://YOUR_SERVER:31443>                               |
