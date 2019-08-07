@@ -105,7 +105,6 @@ At minimum it is recommended that you consider updating the following to ensure 
 ```
 hostname: "allinone"
 advertise_address: 192.168.56.100
-flannel_interface: "eth1"
 ```
 
 In addition it is recommended you consider updating the following passwords to prevent use of the defaults:

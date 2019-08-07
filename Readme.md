@@ -5,7 +5,7 @@ This project provides a set of scripts to automatically create an All-in-One Str
 The following software components are installed on a target single (virtual) server:
 
 - **Docker**: Required to run containers for later components
-- **Kubeadm**: Kubernetes minimal distribution tailored to run in a single machine small footprint
+- **MicroK8s**: Kubernetes minimal development distribution tailored to run in a single machine small footprint (not production)
 - **Stratoss&trade; Lifecycle Manager**: A minimal deployment Stratoss LM
 - **Ansible RM**: Ansible Resource Manager installed and attached to Stratoss LM
 
