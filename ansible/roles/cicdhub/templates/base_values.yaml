@@ -41,7 +41,7 @@ jenkins:
     storageClass: microk8s-hostpath
 
 openldap:
-{% if lm_openldap_enabled|default(False)|bool == True %}
+{% if lm_cicdhub_openldap_enabled|default(False)|bool == True %}
   enabled: true
 {% else %}
   enabled: false
