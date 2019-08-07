@@ -10,6 +10,7 @@ hostname: "allinone"
 # Docker
 ####################################################################################
 
+## MicroK8s Docker socket is not in the usual place
 docker_env:
   DOCKER_HOST: "unix://var/snap/microk8s/current/docker.sock"
 
@@ -127,7 +128,7 @@ lm_secure: True
 #lm_theme_name: name of theme (name of theme directory inside the theme.tar to be used)
 
 ## The following are optionally installed with LM, set to False or comment out to disable them
-## By default, OpenLDAP is enabled for LM and disabled for OpenLDAP
+## By default, OpenLDAP installation is enabled for LM and disabled for OpenLDAP
 lm_nginx_ingress_enabled: False
 lm_filebeat_enabled: False
 lm_kibana_enabled: False
