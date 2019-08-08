@@ -34,7 +34,7 @@ microk8s: True
 # In a multi network interface server you can specify which ip address to bind to, otherwise comment this variable out
 # and the default IP address discovered by Ansible will be used
 # Set this to the IP you expect to use to access open ports on the target machine.
-#advertise_address: 10.220.217.248
+#advertise_address:
 
 ## Disable to prevent installation of Helm
 helm: True
@@ -43,6 +43,17 @@ helm: True
 #helm_repos:
 #  - name: repo-name
 #    url: repo-addr
+
+# MicroK8s ingress runs on ports 80 and 443, so use different ports. MicroK8s API server
+# runs on port 8080, so use different ports for proxy ports.
+apache2_port: 8180
+apache2_ssl_port: 8443
+lm_ui_non_ssl_port: 80
+lm_ui_ssl_port: 443
+lm_api_non_ssl_port: 80
+lm_api_ssl_port: 443
+lm_ui_proxy_port: 8082
+lm_api_proxy_port: 8083
 
 ####################################################################################
 # CICDHub

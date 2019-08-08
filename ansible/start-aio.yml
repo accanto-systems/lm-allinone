@@ -25,19 +25,6 @@
         name: lifecyclemanager
       when: lm|default(False)|bool == True
 
-    # MicroK8s ingress runs on ports 80 and 443, so use different ports. MicroK8s API server
-    # runs on port 8080, so use different ports for proxy ports.
-    - name: Set Proxy Ports
-      set_fact:
-        apache2_port: 8180
-        apache2_ssl_port: 8443
-        lm_ui_non_ssl_port: 80
-        lm_ui_ssl_port: 443
-        lm_api_non_ssl_port: 80
-        lm_api_ssl_port: 443
-        lm_ui_proxy_port: 8082
-        lm_api_proxy_port: 8083
-
     - import_role:
         name: lifecyclemanager-proxy
       when: lm|default(False)|bool == True and lm_proxy|default(False)|bool == True
