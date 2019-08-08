@@ -5,6 +5,9 @@ cicdhub_helm_chart_location: https://github.com/accanto-systems/lm-cicdhub/relea
 ## The file will be copied from the local machine to the target machine then included on the helm install command with the option: -f <filename>.yaml
 #cicdhub_values: my-custom-values.yaml
 
+apache2_port: 80
+apache2_ssl_port: 443
+
 lm_nexus_proxy_port: 8085
 lm_gogs_proxy_port: 8086
 lm_jenkins_master_proxy_port: 8087

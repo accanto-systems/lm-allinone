@@ -29,6 +29,8 @@
     # runs on port 8080, so use different ports for proxy ports.
     - name: Set Proxy Ports
       set_fact:
+        apache2_port: 8180
+        apache2_ssl_port: 8443
         lm_ui_non_ssl_port: 80
         lm_ui_ssl_port: 443
         lm_api_non_ssl_port: 80
