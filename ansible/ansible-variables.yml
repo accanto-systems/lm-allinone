@@ -54,6 +54,7 @@ lm_api_non_ssl_port: 80
 lm_api_ssl_port: 443
 lm_ui_proxy_port: 8082
 lm_api_proxy_port: 8083
+lm_kibana_non_ssl_port: 80
 
 ####################################################################################
 # CICDHub
@@ -141,7 +142,7 @@ lm_secure: True
 ## The following are optionally installed with LM, set to False or comment out to disable them
 ## By default, OpenLDAP installation is enabled for LM and disabled for OpenLDAP
 lm_nginx_ingress_enabled: False
-lm_filebeat_enabled: False
+lm_filebeat_enabled: True
 lm_kibana_enabled: False
 lm_kafdrop_enabled: False
 lm_openldap_enabled: True
