@@ -25,6 +25,8 @@ docker_env:
 ## Type of K8s to install - defaults to Microk8s
 k8s_type: microk8s
 
+microk8s_version: "1.13/edge"
+
 ## Disable to prevent installation of Microk8s
 microk8s: True
 
@@ -75,6 +77,8 @@ lm_nexus_enabled: True
 lm_gogs_enabled: True
 lm_docker_registry_enabled: True
 lm_jenkins_enabled: True
+## By default, use the Foundation OpenLDAP
+lm_cicdhub_openldap_enabled: False
 
 ####################################################################################
 # Lifecycle Manager
