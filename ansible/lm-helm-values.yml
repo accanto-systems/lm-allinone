@@ -114,6 +114,24 @@ filebeat:
   limits:
     cpu: 100m
     memory: 256Mi
+  extraVolumeMounts:
+  - name: lm-filebeat
+    mountPath: /var/lm/filebeat
+  ## allow Filebeat to access Microk8s docker logs
+  - name: varsnapdockercontainers
+    mountPath: /var/snap/microk8s/common/var/lib/docker/
+    readOnly: true
+  extraVolumes:
+  - name: lm-filebeat
+    configMap:
+      name: lm-filebeat-cm
+      items:
+      - key: fields
+        path: fields.yml
+  ## allow Filebeat to access Microk8s docker logs
+  - name: varsnapdockercontainers
+    hostPath:
+      path: /var/snap/microk8s/common/var/lib/docker/
 
 configurator:
   lmConfigImport:

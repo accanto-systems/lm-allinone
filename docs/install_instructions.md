@@ -1,6 +1,6 @@
 # Running the AIO
 
-The AIO can be installed using Vagrant (with Ansible) or Ansible directly to an existing machine.
+The AIO can be installed using Vagrant (with Ansible) or Ansible (version 2.8.2 or higher) directly to an existing machine.
 
 ## Pre-requisites
 
