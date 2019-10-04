@@ -16,4 +16,4 @@ Scripts are provided to create AIO environments using Vagrant, supporting Virtua
 
 Clone this repository and follow the [Install Instructions](./docs/install_instructions.md) to get started
 
-Note: do not use lm-allinone in production, nor on a public cloud or a system open to the Internet (microk8s is not secure and is not intended to run in these environments)
+**Note:** do not use lm-allinone in production, nor on a public cloud or a system open to the Internet (microk8s is not secure and is not intended to run in these environments)
