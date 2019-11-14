@@ -31,6 +31,21 @@ For a Vagrant install, the following software must be installed on your host mac
 - [Vagrant](https://www.vagrantup.com/)
 - [Virtualbox](https://www.virtualbox.org/) (support for libvirt and hyperkit are also provided in the Vagrantfile)
 
+
+#### Existing Ubuntu box
+
+If you are not using Vagrant but are installing on an existing Ubuntu box then you must ensure that Apparmor is running:
+
+```
+sudo service apparmor start
+```
+
+and that port 8080 should be free. If Apache2 is running on port 8080 then remove it (lm-allinone will install Apache2 on a non-conflicting port):
+
+```
+sudo apt-get purge apache2
+```
+
 #### Mac OS X Specific
 
 If installing the AIO on a Mac environment using Vagrant, please follow the instructions in [Mac OS X - Hyperkit](hyperkit.md) before continuing.
@@ -112,6 +127,7 @@ In addition it is recommended you consider updating the following passwords to p
 ```
 lm_ldap_manager_password:
 
+# this is the OAuth LM admin client secret
 lm_admin_secret:
 ```
 
