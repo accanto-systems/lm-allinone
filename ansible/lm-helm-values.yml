@@ -135,6 +135,9 @@ filebeat:
       path: /var/snap/microk8s/common/var/lib/docker/
 
 configurator:
+  loggingDashboard:
+    enabled: true
+    endpoint: http://{{ advertise_address if advertise_address is defined else hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:31001
   lmConfigImport:
     apollo:
       alm.apollo.janus.storage.cql.replication-factor: 1
