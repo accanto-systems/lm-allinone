@@ -145,7 +145,6 @@ lm_secure: True
 ## By default, OpenLDAP installation is enabled for LM and disabled for OpenLDAP
 lm_nginx_ingress_enabled: False
 lm_filebeat_enabled: True
-lm_kibana_enabled: False
 lm_kafdrop_enabled: False
 lm_openldap_enabled: True
 

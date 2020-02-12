@@ -134,9 +134,6 @@ filebeat:
     hostPath:
       path: /var/snap/microk8s/common/var/lib/docker/
 
-kibana:
-  enabled: true
-
 configurator:
   loggingDashboard:
     enabled: true
