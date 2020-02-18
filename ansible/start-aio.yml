@@ -35,6 +35,7 @@
         drivers_onboard_auth: "{{ (lm_secure|default(False)|bool) == True }}"
         drivers_onboard_addr: "{{ lm_proxy_api_addr }}" #set by lifecyclemanager-proxy role
         drivers_onboard_client_secret: "{{ lm_admin_secret|default('') }}"
+      when: drivers|default(False)|bool == True
 
     - import_role:
         name: ansiblerm
