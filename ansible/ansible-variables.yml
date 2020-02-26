@@ -161,12 +161,12 @@ drivers: True
 drivers_ald_enabled: True
 
 ## Full file or http address of the helm chart
-drivers_ald_chart: https://github.com/accanto-systems/ansible-lifecycle-driver/releases/download/1.0.0/ansiblelifecycledriver-1.0.0.tgz
+drivers_ald_chart: https://github.com/accanto-systems/ansible-lifecycle-driver/releases/download/1.0.2/ansiblelifecycledriver-1.0.2.tgz
 
 ## Docker image and version 
 drivers_ald_docker_strategy: from_image
 drivers_ald_docker_image: accanto/ansible-lifecycle-driver
-drivers_ald_docker_version: 1.0.0
+drivers_ald_docker_version: 1.0.2
 #drivers_ald_docker_strategy: from_package
 #drivers_ald_docker_tar: 
 
