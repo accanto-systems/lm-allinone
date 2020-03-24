@@ -64,7 +64,7 @@ lm_kibana_non_ssl_port: 80
 cicdhub: True
 
 ## CICDHub Helm chart location
-#cicdhub_helm_chart_location: https://github.com/accanto-systems/lm-cicdhub/releases/download/v2.0.5-alpha-1/cicdhub-2.0.5-alpha-1.tgz
+cicdhub_helm_chart_location: https://github.com/accanto-systems/lm-cicdhub/releases/download/2.0.6/cicdhub-2.0.6.tgz
 
 ## Additional values file to be added to the helm install command of each chart
 ## The file will be copied from the local machine to the target machine then included on the helm install command with the option: -f <filename>.yaml
