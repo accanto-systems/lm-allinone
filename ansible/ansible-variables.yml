@@ -142,11 +142,12 @@ lm_secure: True
 #lm_theme_name: name of theme (name of theme directory inside the theme.tar to be used)
 
 ## The following are optionally installed with LM, set to False or comment out to disable them
-## By default, OpenLDAP installation is enabled for LM and disabled for OpenLDAP
+## By default, OpenLDAP installation is enabled for LM and disabled for CICDHub
+## For lm-allinone do not enable Ingress (Microk8s deploys an Ingress Controller out of the box)
 lm_nginx_ingress_enabled: False
 lm_filebeat_enabled: True
-lm_kibana_enabled: False
-lm_kafdrop_enabled: False
+lm_kibana_enabled: True
+lm_kafdrop_enabled: True
 lm_openldap_enabled: True
 
 ####################################################################################

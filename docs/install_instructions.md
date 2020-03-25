@@ -6,7 +6,7 @@ The AIO can be installed using Vagrant (with Ansible) or Ansible (version 2.8.2 
 
 ### Hardware
 
-A server with 16G Memory, 4+ CPUs, 200G disk is required to run the AIO LM environment.
+A server with 24G+ Memory, 4+ CPUs, 200G disk is required to run the AIO LM environment, with everything (LM and CICDHub) installed.
 
 ### Software dependencies
 
