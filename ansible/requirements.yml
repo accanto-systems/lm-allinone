@@ -17,3 +17,7 @@
 - src: https://github.com/accanto-systems/ansible-role-microk8s
   scm: git
   name: microk8s
+
+- src: https://github.com/accanto-systems/ansible-role-drivers
+  scm: git
+  name: drivers

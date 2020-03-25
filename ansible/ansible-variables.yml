@@ -64,7 +64,7 @@ lm_kibana_non_ssl_port: 80
 cicdhub: True
 
 ## CICDHub Helm chart location
-#cicdhub_helm_chart_location: https://github.com/accanto-systems/lm-cicdhub/releases/download/v2.0.5-alpha-1/cicdhub-2.0.5-alpha-1.tgz
+cicdhub_helm_chart_location: https://github.com/accanto-systems/lm-cicdhub/releases/download/2.0.6/cicdhub-2.0.6.tgz
 
 ## Additional values file to be added to the helm install command of each chart
 ## The file will be copied from the local machine to the target machine then included on the helm install command with the option: -f <filename>.yaml
@@ -149,6 +149,53 @@ lm_filebeat_enabled: True
 lm_kibana_enabled: True
 lm_kafdrop_enabled: True
 lm_openldap_enabled: True
+
+####################################################################################
+# Drivers
+####################################################################################
+
+# Enable/disable all drivers 
+drivers: True
+
+#############################
+## Ansible Lifecycle Driver
+#############################
+drivers_ald_enabled: True
+
+## Full file or http address of the helm chart
+drivers_ald_chart: https://github.com/accanto-systems/ansible-lifecycle-driver/releases/download/1.0.2/ansiblelifecycledriver-1.0.2.tgz
+
+## Docker image and version 
+drivers_ald_docker_strategy: from_image
+drivers_ald_docker_image: accanto/ansible-lifecycle-driver
+drivers_ald_docker_version: 1.0.2
+#drivers_ald_docker_strategy: from_package
+#drivers_ald_docker_tar: 
+
+## Type to assign the driver to during onboarding
+drivers_ald_type: ansible
+drivers_ald_url: https://ansible-lifecycle-driver:8293
+drivers_ald_cert_secret: ald-tls
+
+##########################
+## Openstack VIM Driver
+##########################
+drivers_ovd_enabled: True
+
+## Full file or http address of the helm chart
+drivers_ovd_chart: https://github.com/accanto-systems/openstack-vim-driver/releases/download/1.0.0/os-vim-driver-1.0.0.tgz
+
+## Docker image and version 
+drivers_ovd_docker_strategy: from_image
+drivers_ovd_docker_image: accanto/os-vim-driver
+drivers_ovd_docker_version: 1.0.0
+#drivers_ovd_docker_strategy: from_package
+#drivers_ovd_docker_tar: 
+
+## Type to assign the driver to during onboarding
+drivers_ovd_type: Openstack
+drivers_ovd_url: https://os-vim-driver:8292
+drivers_ovd_cert_secret: ovd-tls
 
 ####################################################################################
 # Ansible RM Variables

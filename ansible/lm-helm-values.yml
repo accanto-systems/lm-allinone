@@ -50,11 +50,11 @@ kafka:
   resources:
     requests:
       cpu: 200m
-      memory: 512Mi
+      memory: 1024Mi
     limits:
       cpu: 300m
-      memory: 512Mi
-  kafkaHeapOptions: "-Xmx512M -Xms512M"
+      memory: 1536Mi
+  kafkaHeapOptions: "-Xmx1G -Xms1G"
   external:
     enabled: true
   livenessProbe:
