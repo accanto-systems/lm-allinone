@@ -21,4 +21,3 @@
 - src: https://github.com/accanto-systems/ansible-role-drivers
   scm: git
   name: drivers
-  version: issue/5
