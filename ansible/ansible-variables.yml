@@ -193,9 +193,31 @@ drivers_ovd_docker_version: 1.0.0
 #drivers_ovd_docker_tar: 
 
 ## Type to assign the driver to during onboarding
-drivers_ovd_type: Openstack
+drivers_ovd_type: openstack
 drivers_ovd_url: https://os-vim-driver:8292
 drivers_ovd_cert_secret: ovd-tls
+# VIM type overrides drivers_ovd_type when using LM 2.1. Uppercase "O" as it must match the deployment location infrastructure type
+drivers_ovd_vim_type: Openstack
+
+##########################
+## Kubernetes Driver
+##########################
+## NOTE: Only use this driver if running LM version 2.2+
+
+drivers_kubedriver_enabled: False
+
+## Full file or http address of the helm chart
+drivers_kubedriver_chart: https://github.com/accanto-systems/kubernetes-driver/releases/download/0.0.3a2/kubedriver-0.0.3a2.tgz
+
+## Docker image and version 
+drivers_kubedriver_docker_strategy: from_image
+drivers_kubedriver_docker_image: accanto/kubedriver
+drivers_kubedriver_docker_version: 0.0.3a2
+
+## Type to assign the driver to during onboarding
+drivers_kubedriver_type: kubernetes
+drivers_kubedriver_url: https://kubedriver:8294
+drivers_kubedriver_cert_secret: kubedriver-tls
 
 ####################################################################################
 # Ansible RM Variables
