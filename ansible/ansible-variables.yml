@@ -207,12 +207,12 @@ drivers_ovd_vim_type: Openstack
 drivers_kubedriver_enabled: False
 
 ## Full file or http address of the helm chart
-drivers_kubedriver_chart: https://github.com/accanto-systems/kubernetes-driver/releases/download/0.0.3a2/kubedriver-0.0.3a2.tgz
+drivers_kubedriver_chart: https://github.com/accanto-systems/kubernetes-driver/releases/download/0.0.3/kubedriver-0.0.3.tgz
 
 ## Docker image and version 
 drivers_kubedriver_docker_strategy: from_image
 drivers_kubedriver_docker_image: accanto/kubedriver
-drivers_kubedriver_docker_version: 0.0.3a2
+drivers_kubedriver_docker_version: 0.0.3
 
 ## Type to assign the driver to during onboarding
 drivers_kubedriver_type: kubernetes
