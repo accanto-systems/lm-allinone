@@ -220,8 +220,10 @@ drivers_kubedriver_url: https://kubedriver:8294
 drivers_kubedriver_cert_secret: kubedriver-tls
 
 # Enable to create a Deployment Location for kubedriver (in AIO Kubernetes cluster). This deployment location also supports connections to pod from Ansible Lifecycle Manager (ald version >= 2.0.1)
-deployment_location_kubedriver: True
-deployment_location_kubedriver_name: local-kubernetes
+kubedriver_create_deployment_location: True
+# Name of Deployment Location to be created
+kubedriver_deployment_location_name: local-kubernetes
+
 
 ####################################################################################
 # Ansible RM Variables
