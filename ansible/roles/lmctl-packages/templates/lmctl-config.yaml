@@ -1,0 +1,12 @@
+environments:
+  dev:
+    description: Your LM environment
+    lm:
+      host: {{ advertise_address }}
+      port: {{ lm_api_proxy_port }}
+      protocol: https
+      secure: true
+      auth_port: {{ lm_ui_proxy_port }}
+      username: jack
+      password: jack
+

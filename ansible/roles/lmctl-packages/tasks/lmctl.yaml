@@ -1,0 +1,42 @@
+- name: Install Python3.7
+  apt:
+    pkg:
+    - python3.7
+    - python3-pip
+
+- name: Upgrade pip
+  pip:
+    executable: pip3
+    name: pip
+    state: latest
+  become: no
+
+- name: Install virtualenv
+  pip:
+    executable: pip3
+    name: virtualenv
+  become: no
+ 
+- name: Install lmctl into virtual environment on basehost
+  pip:
+    name: lmctl
+    virtualenv: "{{ lookup('env','HOME') }}/lmctl-env"
+    virtualenv_python: python3.7
+  become: no
+
+- name: Copy lmctl config file
+  template:
+    src: lmctl-config.yaml
+    dest: "{{ lookup('env','HOME') }}/lmctl-config.yaml"
+    mode: 0777
+  become: no
+
+- name: Check lmctl environments
+  shell: source ~/lmctl-env/bin/activate && lmctl env list
+  args:
+    executable: /bin/bash
+  environment: 
+    LMCONFIG: "{{ lookup('env','HOME') }}/lmctl-config.yaml"
+  register: lmctl_env_result
+  failed_when: "'dev' not in lmctl_env_result.stdout"
+  become: no

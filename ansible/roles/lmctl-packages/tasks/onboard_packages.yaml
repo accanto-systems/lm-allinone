@@ -1,0 +1,28 @@
+- name: Check for existing cloned directory in $HOME
+  stat:
+    path: "{{ lookup('env','HOME') }}/{{ packages_onboard_git_repo_name }}"
+  register: clone_dir
+
+- name: Check for lmproject in directory
+  command: "ls {{ lookup('env','HOME') }}/{{ packages_onboard_git_repo_name }}/"
+  register: clone_dir_contents
+  when: clone_dir.stat.exists
+
+- name: Clone repository containing packages from git
+  git:
+    repo: "{{ packages_onboard_git_repo_url }}"
+    key_file: "{{ packages_onboard_git_key }}"
+    dest: "{{ lookup('env','HOME') }}/{{ packages_onboard_git_repo_name }}"
+    accept_hostkey: yes
+  become: no
+  when: clone_dir_contents == "" or clone_dir.stat.exists|bool == False
+
+- name: Push VNF projects to LM using lmctl
+  shell: source ~/lmctl-env/bin/activate && lmctl project push dev
+  args:
+    chdir: "{{ lookup('env','HOME') }}/{{ packages_onboard_git_repo_name }}/{{ item }}"
+    executable: /bin/bash
+  with_items: "{{ packages_onboard_directories_paths }}"
+  environment:
+    LMCONFIG: "{{ lookup('env','HOME') }}/lmctl-config.yaml"
+  become: no
