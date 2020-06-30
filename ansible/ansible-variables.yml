@@ -1,12 +1,10 @@
-
+---
 ####################################################################################
 # General System Variables
 ####################################################################################
 
 # Set the hostname of the target machine
 hostname: "allinone"
-advertise_address: 10.220.217.144
-flannel_interface: "ens192"
 
 ####################################################################################
 # Docker
@@ -66,14 +64,13 @@ lm_kibana_non_ssl_port: 80
 cicdhub: True
 
 ## CICDHub Helm chart location
-#cicdhub_helm_chart_location: https://github.com/accanto-systems/lm-cicdhub/releases/download/2.0.6/cicdhub-2.0.6.tgz
-cicdhub_helm_chart_location: /home/accanto/cicdhub-2.0.7.tgz
+cicdhub_helm_chart_location: https://github.com/accanto-systems/lm-cicdhub/releases/download/2.0.6/cicdhub-2.0.6.tgz
 
 ## Additional values file to be added to the helm install command of each chart
 ## The file will be copied from the local machine to the target machine then included on the helm install command with the option: -f <filename>.yaml
 #cicdhub_values: my-custom-values.yaml
 
-## Enabled flags for CICDHub services
+## Enabled flags for CICDHub services
 lm_nexus_enabled: True
 lm_gogs_enabled: True
 lm_docker_registry_enabled: True
@@ -107,8 +104,7 @@ lm_force_refresh_packages: True
 
 # lm_charts_strategy: from_package
 # Path to lm-helm-charts package (can be a file path or http address)
-#lm_charts_package: ../lm-artifacts/lm-helm-charts-<LM_VERSION>-dist.tgz
-lm_charts_package: http://10.220.216.164:8081/repository/maven-releases/com/accantosystems/stratoss/lm-helm-charts/2.2.0-319/lm-helm-charts-2.2.0-319-dist.tgz
+lm_charts_package: ../lm-artifacts/lm-helm-charts-<LM_VERSION>-dist.tgz
 
 ###################################
 # Lifecycle Manager - Docker Images
@@ -116,8 +112,7 @@ lm_charts_package: http://10.220.216.164:8081/repository/maven-releases/com/acca
 
 # lm_docker_strategy: from_package
 # Path to lm-docker-source package (can be file based or http)
-#lm_docker_package: ../lm-artifacts/lm-docker-source-<LM_VERSION>-dist.tgz
-lm_docker_package: http://10.220.216.164:8081/repository/maven-releases/com/accantosystems/stratoss/lm-docker-source/2.2.0-319/lm-docker-source-2.2.0-319-dist.tgz
+lm_docker_package: ../lm-artifacts/lm-docker-source-<LM_VERSION>-dist.tgz
 
 ##Switch to pulling Docker Images from a registry instead
 # lm_docker_strategy: from_registry
@@ -276,10 +271,10 @@ packages_onboard: True
 
 ## Git repo that contains packages. This task requires manually setting up a SSH key with access to the repo before running the playbook ( https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh )
 # Git repo URL to clone using SSH
-packages_onboard_git_repo_url: 'git@github.com:karen-nguyen/training-course.git'
+packages_onboard_git_repo_url: 'git@github.ibm.com:TNC/alm-package-examples.git'
 # SSH key location on the AIO host
-packages_onboard_git_key: '/home/accanto/.ssh/id_rsa'
+packages_onboard_git_key: '~/.ssh/id_rsa'
 # Name of git repo, which is also name of created directory
-packages_onboard_git_repo_name: 'training-course'
+packages_onboard_git_repo_name: 'alm-package-examples'
 # Paths of directories inside repo to be packaged by lmctl
-packages_onboard_directories_paths: ["training-course/busybox","training-course/metric-hub"]
+packages_onboard_directories_paths: ["resources/apache-training","resources/metric-hub"]
