@@ -1,0 +1,15 @@
+## Install lmctl in virtualenv
+lmctl_install: True
+
+## Import initial VNF packages
+packages_onboard: True
+
+## Git repo that contains packages. This task requires manually setting up a SSH key with access to the repo before running the playbook ( https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh )
+# Git repo URL to clone using SSH
+packages_onboard_git_repo_url: ''
+# SSH key location on the AIO host
+packages_onboard_git_key: '' 
+# Name of git repo, which is also name of created directory
+packages_onboard_git_repo_name: ''
+# Paths of directories inside repo to be packaged by lmctl
+packages_onboard_directories_paths: ["",""]

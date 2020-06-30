@@ -1,0 +1,5 @@
+- import_tasks: lmctl.yaml
+  when: lmctl_install|default(False)|bool == True
+
+- import_tasks: onboard_packages.yaml
+  when: packages_onboard|default(False)|bool == True

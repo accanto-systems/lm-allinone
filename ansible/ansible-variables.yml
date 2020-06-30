@@ -70,7 +70,7 @@ cicdhub_helm_chart_location: https://github.com/accanto-systems/lm-cicdhub/relea
 ## The file will be copied from the local machine to the target machine then included on the helm install command with the option: -f <filename>.yaml
 #cicdhub_values: my-custom-values.yaml
 
-## Enabled flags for CICDHub services
+## Enabled flags for CICDHub services
 lm_nexus_enabled: True
 lm_gogs_enabled: True
 lm_docker_registry_enabled: True
@@ -163,12 +163,12 @@ drivers: True
 drivers_ald_enabled: True
 
 ## Full file or http address of the helm chart
-drivers_ald_chart: https://github.com/accanto-systems/ansible-lifecycle-driver/releases/download/1.0.2/ansiblelifecycledriver-1.0.2.tgz
+drivers_ald_chart: https://github.com/accanto-systems/ansible-lifecycle-driver/releases/download/2.0.1/ansiblelifecycledriver-2.0.1.tgz
 
 ## Docker image and version 
 drivers_ald_docker_strategy: from_image
 drivers_ald_docker_image: accanto/ansible-lifecycle-driver
-drivers_ald_docker_version: 1.0.2
+drivers_ald_docker_version: 2.0.1
 #drivers_ald_docker_strategy: from_package
 #drivers_ald_docker_tar: 
 
@@ -183,12 +183,12 @@ drivers_ald_cert_secret: ald-tls
 drivers_ovd_enabled: True
 
 ## Full file or http address of the helm chart
-drivers_ovd_chart: https://github.com/accanto-systems/openstack-vim-driver/releases/download/1.0.0/os-vim-driver-1.0.0.tgz
+drivers_ovd_chart: https://github.com/accanto-systems/openstack-vim-driver/releases/download/2.0.1/os-vim-driver-2.0.1.tgz
 
 ## Docker image and version 
 drivers_ovd_docker_strategy: from_image
 drivers_ovd_docker_image: accanto/os-vim-driver
-drivers_ovd_docker_version: 1.0.0
+drivers_ovd_docker_version: 2.0.1
 #drivers_ovd_docker_strategy: from_package
 #drivers_ovd_docker_tar: 
 
@@ -204,7 +204,7 @@ drivers_ovd_vim_type: Openstack
 ##########################
 ## NOTE: Only use this driver if running LM version 2.2+
 
-drivers_kubedriver_enabled: False
+drivers_kubedriver_enabled: True
 
 ## Full file or http address of the helm chart
 drivers_kubedriver_chart: https://github.com/accanto-systems/kubernetes-driver/releases/download/0.0.3/kubedriver-0.0.3.tgz
@@ -230,7 +230,7 @@ kubedriver_deployment_location_name: local-kubernetes
 ####################################################################################
 
 ## Disable to prevent installation of Ansible RM
-arm: True
+arm: False
 
 ##################################
 # Ansible RM - Helm Chart
@@ -259,3 +259,22 @@ arm_secure: True
 
 ## Enable to include installation of Portainer
 portainer: False
+
+####################################################################################
+# LMCTL installation and initial VNF packages onboarding
+####################################################################################
+## Install lmctl in virtualenv
+lmctl_install: True
+
+## Import initial VNF packages
+packages_onboard: True
+
+## Git repo that contains packages. This task requires manually setting up a SSH key with access to the repo before running the playbook ( https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh )
+# Git repo URL to clone using SSH
+packages_onboard_git_repo_url: 'git@github.ibm.com:TNC/alm-package-examples.git'
+# SSH key location on the AIO host
+packages_onboard_git_key: '~/.ssh/id_rsa'
+# Name of git repo, which is also name of created directory
+packages_onboard_git_repo_name: 'alm-package-examples'
+# Paths of directories inside repo to be packaged by lmctl
+packages_onboard_directories_paths: ["resources/apache-training","resources/metric-hub"]
