@@ -163,12 +163,12 @@ drivers: True
 drivers_ald_enabled: True
 
 ## Full file or http address of the helm chart
-drivers_ald_chart: https://github.com/IBM/ansible-lifecycle-driver/releases/download/2.0.1/ansiblelifecycledriver-2.0.1.tgz
+drivers_ald_chart: https://github.com/IBM/ansible-lifecycle-driver/releases/download/2.1.0/ansiblelifecycledriver-2.1.0.tgz
 
 ## Docker image and version 
 drivers_ald_docker_strategy: from_image
-drivers_ald_docker_image: accanto/ansible-lifecycle-driver
-drivers_ald_docker_version: 2.0.1
+drivers_ald_docker_image: ibmcom/ansible-lifecycle-driver
+drivers_ald_docker_version: 2.1.0
 #drivers_ald_docker_strategy: from_package
 #drivers_ald_docker_tar: 
 
@@ -183,12 +183,12 @@ drivers_ald_cert_secret: ald-tls
 drivers_ovd_enabled: True
 
 ## Full file or http address of the helm chart
-drivers_ovd_chart: https://github.com/IBM/openstack-vim-driver/releases/download/2.0.1/os-vim-driver-2.0.1.tgz
+drivers_ovd_chart: https://github.com/IBM/openstack-vim-driver/releases/download/2.1.0/os-vim-driver-2.1.0.tgz
 
 ## Docker image and version 
 drivers_ovd_docker_strategy: from_image
-drivers_ovd_docker_image: accanto/os-vim-driver
-drivers_ovd_docker_version: 2.0.1
+drivers_ovd_docker_image: ibmcom/os-vim-driver
+drivers_ovd_docker_version: 2.1.0
 #drivers_ovd_docker_strategy: from_package
 #drivers_ovd_docker_tar: 
 
@@ -207,12 +207,12 @@ drivers_ovd_vim_type: Openstack
 drivers_kubedriver_enabled: False
 
 ## Full file or http address of the helm chart
-drivers_kubedriver_chart: https://github.com/IBM/kubernetes-driver/releases/download/0.0.4/kubedriver-0.0.4.tgz
+drivers_kubedriver_chart: https://github.com/IBM/kubernetes-driver/releases/download/0.0.5/kubedriver-0.0.5.tgz
 
 ## Docker image and version 
 drivers_kubedriver_docker_strategy: from_image
-drivers_kubedriver_docker_image: accanto/kubedriver
-drivers_kubedriver_docker_version: 0.0.4
+drivers_kubedriver_docker_image: ibmcom/kubedriver
+drivers_kubedriver_docker_version: 0.0.5
 
 ## Type to assign the driver to during onboarding
 drivers_kubedriver_type: kubernetes
