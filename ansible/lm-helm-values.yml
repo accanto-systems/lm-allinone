@@ -172,7 +172,7 @@ apollo:
   app:
     config:
       env:
-        "JVM_OPTIONS": "-Xmx100m"
+        "JVM_OPTIONS": "-Xmx256m"
     
 conductor:
   app:
